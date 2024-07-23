@@ -6,8 +6,19 @@ use App\Http\Controllers\test1Controller;
 use App\Http\Controllers\testController;
 use App\Http\Controllers\userController;
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
+})->name('welcome')->middleware('auth');
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+Route::post('/login', [userController::class, 'login']);
+
+
+Route::get('/register', function () {
+    return view('register');
 });
 
 Route::resource('test', test1Controller::class);
@@ -39,9 +50,7 @@ Route::get('/name', [testController::class, 'name']);
 Route::get('/testN', [test1Controller::class, 'index']);
 
 //route 'for userLogin.blade.php'
-Route::get('/login', function(){
-    return view('login');
-});
+
 
 //route 'for userRegister.blade.php'
 Route::get('/register', function(){

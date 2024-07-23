@@ -32,40 +32,67 @@
         <div class="d-flex">
             <div class="register-container">
                 <h2 class="text-center">REGISTER</h2>
-                <form>
+                <form method="POST" action="{{route('users.store')}}">
+                    @csrf
                     <div class="form-group">
                         <label for="name">Name: </label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter name" size="25" minlength="2" autofocus required>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" size="25" minlength="2" autofocus required value="{{old('name')}}">
+                        @error('name')
+                        <div>
+                            {{$message}}
+                        </div>
+                        @endError
                     </div>
                     <div class="form-group">
-                        <label for="surname">Surname: </label>
-                        <input type="text" class="form-control" id="surname" placeholder="Enter surname" size="25" minlength="2" required>
+                        <label for="username">username: </label>
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Enter username" size="25" minlength="2" required value="{{old('username')}}">
                     </div>
+                    @error('username')
+                        <div>
+                            {{$message}}
+                        </div>
+                        @endError
                     <div class="form-group">
                         <label for="email">Email: </label>
-                        <input type="email" class="form-control" id="email" placeholder="example@mail.com" size="25" required>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="example@mail.com" size="25" required value="{{old('email')}}">
                     </div>
+                    @error('email')
+                        <div>
+                            {{$message}}
+                        </div>
+                        @endError
                     <div class="form-group">
                         <label for="password">Password: </label>
-                        <input type="password" class="form-control" id="password" placeholder="Enter password" size="25" minlength="8" required>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" size="25" minlength="8" required >
+                    </div>
+                    @error('password')
+                        <div>
+                            {{$message}}
+                        </div>
+                        @endError
+                    <div class="form-group">
+                        <label for="password_confirmation">Confirm Password: </label>
+                        <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Confirm password" size="25" minlength="8" required >
                     </div>
                     <div class="form-group">
-                        <label for="confirm-password">Confirm Password: </label>
-                        <input type="password" class="form-control" id="confirm-password" placeholder="Confirm password" size="25" minlength="8" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Gender: </label>
+                        <label>Sex: </label>
                         <div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="sexe" id="male" value="M">
+                                <input class="form-check-input" type="radio" name="sex" id="sex" value="male">
                                 <label class="form-check-label" for="male">M</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="sexe" id="female" value="F">
+                                <input class="form-check-input" type="radio" name="sex" id="sex" value="female">
                                 <label class="form-check-label" for="female">F</label>
                             </div>
                         </div>
+                        @error('sex')
+                        <div>
+                            {{$message}}
+                        </div>
+                        @endError
                     </div>
+                    
                     <button type="submit" class="btn btn-success btn-block">Register</button>
                 </form>
             </div>

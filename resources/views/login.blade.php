@@ -45,16 +45,17 @@
     <!-- My HTML -->
     <div class="login-container">
         <h2 class="text-center">LOGIN</h2>
-        <form>
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
             <div class="form-group">
                 <label for="email">Email: </label>
                 <input type="email" class="form-control" id="email" size="25" placeholder="example@mail.com" autofocus
-                    required>
+                    required name="email">
             </div>
             <div class="form-group">
                 <label for="password">Password: </label>
                 <input type="password" class="form-control" id="password" size="25" minlength="8"
-                    placeholder="Enter password" required>
+                    placeholder="Enter password" required name="password">
             </div>
             <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="rememberMe">
@@ -66,6 +67,11 @@
                 </div>
                 <button type="submit" class="btn btn-success btn-block">Login</button>
             </div>
+            @error('email')
+                        <div>
+                            {{$message}}
+                        </div>
+                        @endError
         </form>
     </div>
     <!-- script Js for bootstrap -->
