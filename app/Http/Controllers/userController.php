@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class test1Controller extends Controller
+class userController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -12,7 +12,6 @@ class test1Controller extends Controller
     public function index()
     {
         //
-        return 'Hello world !';
     }
 
     /**
@@ -21,6 +20,7 @@ class test1Controller extends Controller
     public function create()
     {
         //
+        return view('register');
     }
 
     /**
